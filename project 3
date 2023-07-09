@@ -1,0 +1,20 @@
+a = input("c: ")
+b = input("d: ")
+a = int(a)
+b = int(b)
+print(f"a*b = {a*b} ")
+
+years = input("how many years are you? ")
+years = int(years)
+print(f" Congratulations, You are {years * 365} days old")
+print(f" Congratulations, You are {years * 365 * 24} hours old")
+print(f" Congratulations, You are {years * 365 *60 } minutes old")
+print(f" Congratulations, You are {years * 365 * 30} seconds old")
+
+price = input("how much do you want to tip? ")
+price = int(price)
+percentage = input("How many pencentage do you want to tip? ")
+percentage_tip = float(percentage)
+tip = price * percentage_tip / 100
+round(tip, 2)
+print(f"TIp:", tip)
