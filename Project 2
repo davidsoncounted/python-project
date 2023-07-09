@@ -1,0 +1,17 @@
+kg = 2
+lbs = kg
+lbs = kg * 2.2046
+kb = lbs
+kb
+
+r = 20
+pi = 3.14
+c = 2 * pi * r
+cell = c
+cell
+
+a = 5
+mul = a * 3
+di = mul / 6
+ans = a / di
+ans
