@@ -1,0 +1,78 @@
+gender = input("what is your gender? ")
+print(f"you're a ", gender)
+if gender == "male":
+    age = input("what is your age? ")
+    age = int(age)
+    market_price = ''
+    if age <= 26:
+        print("you are partially eligible")
+        market_price = input("Would you like to check your market price? ")
+        if market_price == 'yes':
+            print("your market price is 23%")
+        elif market_price == 'no':
+            print("ok, bye")
+        
+        
+    elif age > 26: 
+        print("you can check your market price")
+        market_price = input("Would you like to check your market price? ")
+        if market_price == 'yes':
+            print("your market price is 10%")
+        elif market_price == 'no':
+            print("ok, bye")
+        
+    else:
+        print("Not for you")
+if gender != 'male':
+    sports = input("do you like sports? ")
+    sports.upper()
+    if sports == 'yes':
+        print("your market price is 21%")
+    elif sports == 'no':
+        print("your market price is 9%")
+    else:
+        print("please must put yes/No")
+
+
+#I ALSO CREATED A TAX PAYMENT CALCULATOR BELOW
+
+
+gender = input("What is your gender? ")
+if gender == 'male':
+    gender = gender.upper()
+    print("You are a Male")
+    age = input("What is your age? ")
+    age = int(age)
+    if age <= 26:
+        print(f"You're {age} years old")
+        percentage = 10
+        tax = age*percentage
+        print(f"Your tax payment is ${tax} monthly")
+    else:
+        print(f"You're {age} years old")
+        percentage = 23
+        tax = age*percentage
+        print(f"Your tax payment is ${tax} monthly")
+        
+        
+elif gender == 'female':
+    gender = gender.upper()
+    print("You are a female")
+    sports = input("Do you have a sports car? ")
+    sports = sports.upper()
+    if sports == 'YES':
+        percentage = 21
+        print("You have a sports car")
+        market_price = input("What is the market price of your car? ")
+        market_price = int(market_price)
+        print(f"your tax payment is ${market_price*percentage/100} monthly")
+    elif sports == 'NO':
+        print("you do not have any sports car")
+        percentage = 10
+        print(f"your tax payment is ${percentage+100} monthly ")
+        
+    
+else:
+    print("gender not identified, please input 'Male or Female'")
+    persentage = 0
+    
