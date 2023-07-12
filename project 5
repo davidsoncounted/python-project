@@ -1,0 +1,17 @@
+import random
+number = random.randint(1, 10)
+number1 = random.randint(1, 10)
+answer = input(f"what is {number} X {number1} ")
+answer = int(answer)
+result = number * number1
+if answer == result:
+    confirm = input(f"Are yous sure {result} is your answer? ")
+    if confirm == 'yes':
+        print(f"you're correct!!, {number} X {number1} is = {result}")
+    elif confirm == 'no':
+        print("think of the answer, and try again!!")
+    else:
+        print("please you must reply with only yes or no")
+    
+else:
+    print(f"wrong answer!, {number} X {number1} is = {result}")
