@@ -1,0 +1,11 @@
+word_list = ['python', 'programming', 'account', 'look', 'book', 'mistake', 'world', 'cloth']
+list = random.choice(word_list)
+question = ''.join(random.sample(list, len(list)))
+print(f"the wrong word is: {question} ")
+answer_output = input("What's the correct word? ")
+if answer_output == list:
+ print("you're a genius!!")
+elif answer_output != list:
+    print(f"{answer_output} is Incorrect!!, the correct word is: {list}, please try again.")
+else:
+    print("you inserted an incorrect input")
