@@ -1,0 +1,25 @@
+words = ['fiction', 'enterprise', 'science', 'programming', 'resistance', 'condition', 'reverse', 'computer', 'python', 'father']
+computer_choice = random.choice(words)
+guess = ''
+trials = 10
+while trials > 0:
+    print(f"you have {trials} trials left")
+    all_correct = True
+    for guesses in computer_choice:
+        if guesses in guess:
+            print(guesses, end=" ")
+        else:
+           print("_", end=" ")
+           all_correct = False
+           
+    print()
+    if not all_correct:
+        user_answer = input("whats your guess? ")
+        guess = guess + user_answer
+        if user_answer not in computer_choice:
+            trials = trials - 1
+            if trials == 0:
+                print("oops you're out of trials!!")
+    else:
+        trials = 0
+
