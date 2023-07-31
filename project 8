@@ -1,0 +1,23 @@
+def encrypt_char(char, key):
+    return chr(ord('A') + (ord(char) - ord('A') + key) % 26)
+def encrypt_message(message, key):
+    message = message.upper()
+    cipher = ' '
+    for ci in message:
+        if ci in ' .,':
+            cipher = cipher + ci
+        else:
+            cipher = cipher + encrypt_char(ci, key)
+    return cipher
+encrypt_message("my name is Davidson", 3) 
+def decrypt_char(char, key):
+   return chr(ord('A') + (ord(char) - ord('A') + 26 - key) % 26 )
+def decrypt_message(cipher, key):
+    message = ''
+    for ci in cipher:
+        if ci in ' .':
+            message = message + ci
+        else:
+            message = message + decrypt_char(ci, key)
+    return message
+decrypt_message('PB QDPH LV GDYLGVRQ', 3)
