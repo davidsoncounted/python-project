@@ -1,0 +1,38 @@
+towers = [[3, 2, 1], [], []]
+towers[1]
+
+# move function
+def move(towers, dest_tower, from_tower):
+    disk = towers[dest_tower].pop()
+    towers[from_tower].append(disk)
+    return towers
+# print_tower function for creating the tower
+
+def print_towers(towers):
+    for n in range(3, 0, -1):
+        for tower in towers:
+            if len(tower) >= n:
+                print(tower[n - 1], end='  ')
+            else:
+                print('|', end='  ')
+        print()
+    print('-------')
+print_towers(towers)
+
+# solving the tower function
+def solve_tower_of_hanoi(towers, n, start_tower, dest_tower, aux_tower):
+    if n == 0:
+        return 
+    # Move subproblem of n - 1 disks from start_tower to aux_tower
+    solve_tower_of_hanoi(towers, n - 1, start_tower, aux_tower,  dest_tower)
+
+    # Move disk n to dest_tower. (you can print the tower here if you like
+    move(towers, start_tower, dest_tower)
+    print_towers(towers)
+    
+    # Move subproblem of n - 1 disk from aux_tower to dest_tower.
+    solve_tower_of_hanoi(towers, n - 1, aux_tower, dest_tower,  start_tower,)
+
+towers = [[3, 2, 1], [], []]
+print_towers(towers)
+solve_tower_of_hanoi(towers, 3, 0, 2, 1)
