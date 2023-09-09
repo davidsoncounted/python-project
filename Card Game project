@@ -1,0 +1,118 @@
+import random
+
+class card:
+    suits = ['\u2666', '\u2665', '\u2663', '\u2660']
+    ranks = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'j', 'Q', 'K', 'A']
+    def __init__(self, suit, rank):
+        self.suit = suit
+        self.rank = rank
+    def __str__(self):
+        return f"{card.ranks[self.rank]}{card.suits[self.suit]}"
+    def __lt__(self, other):
+        if self.rank == other.rank:
+            return self.suit < other.suit
+        else:
+            return self.rank < other.rank
+
+
+class Deck:
+    def __init__(self):
+        self.deck = []
+        for suit in range(4):
+            for rank in range(13):
+                self.deck.append(card(suit, rank))
+        self.shuffle_card()
+    def __len__(self):
+        return len(self.deck)
+    def add_card(self, card):
+        self.deck.append(card)
+    def pop_card(self):
+        return self.deck.pop()
+    def shuffle_card(self):
+       random.shuffle(self.deck)
+
+
+class Hand(Deck):
+    def __init__(self, label):
+        self.deck = []
+        self.label = label
+        self.win_count = 0
+
+    def __str__(self):
+        return self.label + ": " + ' '.join([str(card) for card in self.deck])
+    def get_label(self):
+        return self.label
+    def get_win_count(self):
+        return self.win_count
+    def round_winner(self):
+        self.win_count = self.win_count + 1
+
+
+deck = Deck()
+
+hands = []
+for n in range(1, 5):
+    hands.append(Hand(f"P{n}"))
+while len(deck) > 0:
+    for hand in hands:
+        hand.add_card(deck.pop_card())
+
+print(hands[0])
+   
+for i in range(13): 
+    input()
+    played_card = []
+    for hand in hands:
+        played_card.append(hand.pop_card())
+    winner_card = max(played_card)
+    winner_hand = hands[played_card.index(winner_card)]
+    winner_hand.round_winner()
+
+    print(f"R{i}:" + ' '.join([str(card) for card in played_card]) + f"'Winner:' {winner_hand.get_label()} {str(winner_card)})")
+ 
+for hand in hands:
+    print(f"Score of {hand.get_label()}: {hand.get_win_count()}")
+if hands[0].get_win_count() > hands[1].get_win_count():
+    if hands[0].get_win_count() > hands[2].get_win_count():
+        if hands[0].get_win_count() > hands[3].get_win_count():
+            print(f"Player: {hands[0]} is the winner of the game by scoring {hands[0].get_win_count()}")
+            if hands[0].get_win_count() == hands[1].get_win_count():
+                print(f"Player: {hands[0]} and {hands[1]} has the same score of {hands[0].get_win_count()}. Draw a new game!!")
+                if hands[0].get_win_count() == hands[2].get_win_count():
+                    print(f"Player: {hands[0]} and {hands[2]} has the same score of {hands[0].get_win_count()}. Draw a new game!!")
+                    if hands[0].get_win_count() == hands[3].get_win_count():
+                        print(f"Player: {hands[0]} and {hands[3]} has the same score of {hands[0].get_win_count()}. Draw a new game!!")
+
+if hands[1].get_win_count() > hands[0].get_win_count():
+    if hands[1].get_win_count() > hands[2].get_win_count():
+        if hands[1].get_win_count() > hands[3].get_win_count():
+            print(f"{hands[1]} is the winner of the game by scoring {hands[1].get_win_count()}")
+            if hands[1].get_win_count() == hands[0].get_win_count():
+                print(f"Player: {hands[1]} and {hands[0]} has the same score of {hands[1].get_win_count()}. Draw a new game!!")
+                if hands[1].get_win_count() == hands[2].get_win_count():
+                    print(f"Player: {hands[1]} and {hands[2]} has the same score of {hands[1].get_win_count()}. Draw a new game!! ")
+                    if hands[1].get_win_count() == hands[3].get_win_count():
+                        print(f"Player: {hands[1]} and {hands[3]} has the same score of {hands[1].get_win_count()}. Draw a new game!! ")
+
+if hands[2].get_win_count() > hands[0].get_win_count():
+    if hands[2].get_win_count() > hands[1].get_win_count():
+        if hands[2].get_win_count() > hands[3].get_win_count():
+            print(f"{hands[2]} is the winner of the game by scoring {hands[2].get_win_count()}")
+            if hands[2].get_win_count() == hands[0].get_win_count():
+                print(f"Player: {hands[2]} and {hands[0]} has the same score of {hands[2].get_win_count()}. Draw a new game!!")
+                if hands[2].get_win_count() == hands[1].get_win_count():
+                    print(f"Player: {hands[2]} and {hands[1]} has the same score of {hands[2].get_win_count()}. Draw a new game!!")
+                    if hands[2].get_win_count() == hands[3].get_win_count():
+                        print(f"Player: {hands[2]} and {hands[3]} has the same score of {hands[2].get_win_count()}. Draw a new game!!")
+
+if hands[3].get_win_count() > hands[0].get_win_count():
+    if hands[3].get_win_count() > hands[1].get_win_count():
+        if hands[3].get_win_count() > hands[2].get_win_count():
+            print(f"{hands[3]} is the winner of the game by scoring {hands[3].get_win_count()}")
+        if hands[3].get_win_count() == hands[0].get_win_count():
+            print(f"Player: {hands[3]} and {hands[0]} has the same score of {hands[2].get_win_count()}. Draw a new game!!")
+            if hands[3].get_win_count() == hands[1].get_win_count():
+                print(f"Player: {hands[3]} and {hands[1]} has the same score of {hands[2].get_win_count()}. Draw a new game!!")
+                if hands[3].get_win_count() == hands[2].get_win_count():  
+                    print(f"Player: {hands[3]} and {hands[2]} has the same score of {hands[2].get_win_count()}. Draw a new game!!")
+
